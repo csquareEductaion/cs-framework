@@ -12,6 +12,12 @@ public class SystemUtil {
         return value;
     }
 
+    public static void setEnv(SystemKey key, String value) {
+
+        String keyString = key.name();
+        System.setProperty(keyString, value);
+    }
+
     public static void setProperty(String key, String value) {
 
         System.setProperty(key, value);
