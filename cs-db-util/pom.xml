@@ -24,6 +24,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency> 
+        <dependency>
+          <groupId>com.csquare.framework</groupId>
+          <artifactId>cs-common-util</artifactId>
+          <version>1.0-SNAPSHOT</version>
+          <scope>compile</scope>
+        </dependency>
     </dependencies> 
     
     <build>
