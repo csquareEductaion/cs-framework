@@ -26,11 +26,12 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <!-- Web -->  
-        
         <dependency>
-	    	<groupId>com.google.code.gson</groupId>
-	    	<artifactId>gson</artifactId>
-		</dependency>        
+          <groupId>com.csquare.framework</groupId>
+          <artifactId>cs-common-util</artifactId>
+          <version>1.0-SNAPSHOT</version>
+          <scope>compile</scope>
+        </dependency>
     </dependencies> 
     
 
