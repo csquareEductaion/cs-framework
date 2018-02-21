@@ -4,7 +4,8 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,7 +18,7 @@ import com.csquare.framework.util.StringUtil;
 
 public class RestExceptionHandler {
 
-    private static final Logger LOGGER = Logger.getLogger(RestExceptionHandler.class);
+    private static final Logger LOGGER = LogManager.getLogger(RestExceptionHandler.class);
 
     /**
      * Method to handle IOException
@@ -39,7 +40,6 @@ public class RestExceptionHandler {
         String errorURL = req.getRequestURL().toString();
         return new ErrorInfo(errorURL, errorMessage);
     }
-    
 
     /**
      * Method to handle Exception

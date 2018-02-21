@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+    <Properties>
+        <Property name="LOG_PATTERN">
+            %d [%x] [%t] %-5p %c - %m%n
+        </Property>
+    </Properties>
+    
+    <Appenders>
+        <Console name="ConsoleAppender" target="SYSTEM_OUT" follow="true">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+		<!-- File Appender -->
+		<File name="FileAppender" fileName="/tmp/cs/logs/cs-framework.log">
+		    <PatternLayout pattern="${LOG_PATTERN}" />
+		    <Policies>
+		        <SizeBasedTriggeringPolicy size="10MB" />
+		    </Policies>
+		    <DefaultRolloverStrategy max="10"/>
+		</File>        
+    </Appenders>
+    
+    <Loggers>
+        <Logger name="com.csquare.framework" level="debug" additivity="false">
+            <AppenderRef ref="ConsoleAppender" />
+            <AppenderRef ref="FileAppender" />
+        </Logger>
+	    <!-- Log everything in Spring Boot -->
+	    <Logger name="org.springframework.boot" level="debug" additivity="false">
+            <AppenderRef ref="ConsoleAppender" />
+            <AppenderRef ref="FileAppender" />
+	    </Logger>
+	
+	    <!-- Log everything in Spring Core -->
+	    <Logger name="org.springframework.core" level="debug" additivity="false">
+            <AppenderRef ref="ConsoleAppender" />
+            <AppenderRef ref="FileAppender" />
+	    </Logger>
+	    
+        <Root level="info">
+            <AppenderRef ref="ConsoleAppender" />
+            <AppenderRef ref="FileAppender" />
+            
+        </Root>
+    </Loggers>
+</Configuration>
