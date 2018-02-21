@@ -57,6 +57,45 @@ public enum PropertyUtil {
 
     }
 
+    /**
+     * Method to provide region on which application is hosted. Every system
+     * must set CodeXRegion as parameter with value like eu-west-1.amazonaws.com
+     *
+     * @param key - The String
+     * @return value - The String
+     */
+    public String getString(String key) {
+
+        String value = prop.getProperty(key);
+        return value;
+    }
+
+    /**
+     * Method to provide region on which application is hosted. Every system
+     * must set CodeXRegion as parameter with value like eu-west-1.amazonaws.com
+     *
+     * @param key - The String
+     * @return value - The String
+     */
+    public Integer getInteger(String key) {
+
+        String value = prop.getProperty(key);
+        return StringUtil.toInt(value);
+    }
+
+    /**
+     * Method to provide region on which application is hosted. Every system
+     * must set CodeXRegion as parameter with value like eu-west-1.amazonaws.com
+     *
+     * @param key - The String
+     * @return value - The String
+     */
+    public Boolean getBoolean(String key) {
+
+        String value = prop.getProperty(key);
+        return StringUtil.toBoolean(value);
+    }
+
     private InputStream getPropertyIS(String fileName) throws FileNotFoundException {
 
         InputStream input = null;
@@ -67,19 +106,5 @@ public enum PropertyUtil {
             throw new RuntimeException(e);
         }
         return input;
-    }
-
-    /**
-     * Method to provide region on which application is hosted. Every system
-     * must set CodeXRegion as parameter with value like eu-west-1.amazonaws.com
-     *
-     * @param key
-     *            - The String
-     * @return value - The String
-     */
-    public String getProperty(String key) {
-
-        String value = prop.getProperty(key);
-        return value;
     }
 }
