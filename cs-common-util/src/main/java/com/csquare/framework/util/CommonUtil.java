@@ -242,6 +242,7 @@ public class CommonUtil {
      * @throws JsonParseException
      * @throws JsonMappingException
      */
+    @SuppressWarnings("unchecked")
     public static <T> T toPojo(Class<T> valueType, String json) {
 
         T value = null;
