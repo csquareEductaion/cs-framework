@@ -11,6 +11,6 @@ public interface DataBase {
     public static final String DATABASE_MAXACTIVE = "db.maxactive";
     public static final String DATABASE_MAXWAIT = "db.maxwait";
 
-    public static final String HIBERNATE_DIALECT = "hibernate.dialect";
-    public static final String HIBERNATE_SHOW_SQL = "hibernate.show_sql";
+    public static final String HIBERNATE_DIALECT = "db.hibernate.dialect";
+    public static final String HIBERNATE_SHOW_SQL = "db.hibernate.show_sql";
 }
