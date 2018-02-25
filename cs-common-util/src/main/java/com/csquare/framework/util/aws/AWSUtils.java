@@ -5,7 +5,6 @@ import java.util.ResourceBundle;
 
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;
-import com.csquare.framework.util.StringUtil;
 
 
 /**
@@ -28,30 +27,9 @@ public abstract class AWSUtils {
      * @throws IOException - The IOException
      */
     public AWSUtils() throws IOException {
-        if (null == bundle) {
-            bundle = ResourceBundle.getBundle("application");
-        }
-    }
-
-    /**
-     * Method to provide environment name. Method may return dev/test/prod based on the environment on which code is deployed.
-     * Every system must set env_name as parameter with value dev/test/prod
-     *
-     * @return envName - The String
-     */
-    public String getEnvironment() {
-
-        envName = System.getProperty("env_name");
-        if (null == envName || envName.isEmpty()) {
-            envName = System.getenv("env_name");
-        }
-
-        if (null == envName || envName.isEmpty()) {
-            envName = "dev";
-        }
-
-        envName = StringUtil.append("-", envName);
-        return envName;
+        // if (null == bundle) {
+        // bundle = ResourceBundle.getBundle("application");
+        // }
     }
 
     /**
@@ -65,8 +43,11 @@ public abstract class AWSUtils {
         if (null != credentials) {
             return credentials;
         }
-        String accessKey = bundle.getString("aws_access_key_id");
-        String secretKey = bundle.getString("aws_secret_access_key");
+        // String accessKey = bundle.getString("aws_access_key_id");
+        // String secretKey = bundle.getString("aws_secret_access_key");
+
+        String accessKey = "AKIAI2UWAMVZ2D5R5AFA";
+        String secretKey = "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";
 
         credentials = new BasicAWSCredentials(accessKey, secretKey);
         return credentials;
