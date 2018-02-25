@@ -1,12 +1,12 @@
 package com.csquare.framework.util;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
 import com.csquare.framework.util.SystemUtil.SystemKey;
+import com.csquare.framework.util.aws.S3Util;
 
 
 public enum PropertyUtil {
@@ -96,12 +96,19 @@ public enum PropertyUtil {
         return StringUtil.toBoolean(value);
     }
 
-    private InputStream getPropertyIS(String fileName) throws FileNotFoundException {
+    private InputStream getPropertyIS(String fileName) {
 
         InputStream input = null;
         try {
             String appConfigPath = SystemUtil.getEnv(SystemKey.CS_APPCONFIG_PATH);
-            input = new FileInputStream(appConfigPath + "/" + fileName);
+            boolean isS3 = appConfigPath.startsWith("s3://");
+            if (isS3) {
+                appConfigPath = appConfigPath.substring(5);
+                S3Util s3Util = new S3Util();
+                input = s3Util.getObject(appConfigPath, fileName);
+            } else {
+                input = new FileInputStream(appConfigPath + "/" + fileName);
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
