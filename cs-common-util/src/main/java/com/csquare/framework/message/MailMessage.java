@@ -19,6 +19,7 @@ public class MailMessage implements Serializable {
     private String subject;
 
     private String body;
+    
 
     private String env;
     private String containerName;
@@ -80,8 +81,10 @@ public class MailMessage implements Serializable {
 
         this.body = body;
     }
+    
 
-    public String getEnv() {
+
+	public String getEnv() {
 
         return env;
     }
